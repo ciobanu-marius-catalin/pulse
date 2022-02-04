@@ -1,0 +1,25 @@
+table.grid2 thead tr th.sortable {
+	cursor: pointer;
+	padding-right: 20px;
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-color: transparent;
+	background-attachment: scroll;
+}
+
+table.grid2 thead tr th.sort {
+	background-image: url('img/sort.png') ;
+}
+
+
+table.grid2 thead tr th.sort_up {
+	background-image: url('img/sort_up.png');
+}
+
+table.grid2 thead tr th.sort_down {
+	background-image: url('img/sort_down.png');
+}
+
+.grid-pager {
+	cursor: pointer;
+}

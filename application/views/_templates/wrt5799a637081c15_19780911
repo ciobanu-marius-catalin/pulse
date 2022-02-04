@@ -1,0 +1,269 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-07-28 09:29:11
+  from "C:\Users\dell1\Documents\NetBeansProjects\pulse\application\views\authorizations\authorizations.tpl" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_5799a63706c9c3_48208244',
+  'file_dependency' => 
+  array (
+    '6bb4d36ecbb25afa9f82e2ccf5e66288ebdcbbfc' => 
+    array (
+      0 => 'C:\\Users\\dell1\\Documents\\NetBeansProjects\\pulse\\application\\views\\authorizations\\authorizations.tpl',
+      1 => 1469687329,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:shared/layout.tpl' => 1,
+  ),
+),false)) {
+function content_5799a63706c9c3_48208244 ($_smarty_tpl) {
+if (!is_callable('smarty_function_bundle')) require_once 'C:\\Users\\dell1\\Documents\\NetBeansProjects\\pulse\\application\\libraries\\Smarty\\plugins\\function.bundle.php';
+if (!is_callable('smarty_function_site_url')) require_once 'C:\\Users\\dell1\\Documents\\NetBeansProjects\\pulse\\application\\libraries\\Smarty\\plugins\\function.site_url.php';
+$_smarty_tpl->ext->_inheritance->init($_smarty_tpl, true);
+?>
+
+
+<?php 
+$_smarty_tpl->ext->_inheritance->processBlock($_smarty_tpl, 0, "head", array (
+  0 => 'block_132355799a636f33cc2_91240421',
+  1 => false,
+  3 => 0,
+  2 => 0,
+));
+?>
+		
+<?php 
+$_smarty_tpl->ext->_inheritance->processBlock($_smarty_tpl, 0, "body", array (
+  0 => 'block_157285799a637046460_76234043',
+  1 => false,
+  3 => 0,
+  2 => 0,
+));
+?>
+
+
+<?php 
+$_smarty_tpl->ext->_inheritance->processBlock($_smarty_tpl, 0, "scripts", array (
+  0 => 'block_309535799a63704b712_92881877',
+  1 => false,
+  3 => 0,
+  2 => 0,
+));
+?>
+						
+
+<?php $_smarty_tpl->ext->_inheritance->endChild($_smarty_tpl);
+$_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:shared/layout.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 2, false);
+}
+/* {block 'head'}  file:authorizations\authorizations.tpl */
+function block_132355799a636f33cc2_91240421($_smarty_tpl, $_blockParentStack) {
+?>
+
+	<?php echo smarty_function_bundle(array('name'=>'grid2'),$_smarty_tpl);?>
+
+	<?php echo smarty_function_bundle(array('name'=>'formz'),$_smarty_tpl);?>
+
+	<?php echo smarty_function_bundle(array('name'=>'select2'),$_smarty_tpl);?>
+
+<?php
+}
+/* {/block 'head'} */
+/* {block 'body'}  file:authorizations\authorizations.tpl */
+function block_157285799a637046460_76234043($_smarty_tpl, $_blockParentStack) {
+?>
+
+
+
+	<div class="row">
+		<ol class="breadcrumb">
+			<li><a href="#">Administration</a></li>
+			<li  class="active">Authorizations</li>
+		</ol>
+	</div>		
+	<div class="row">
+		<button id = "AddActionButton " type="button" data-toggle="modal" data-target="#addActionModal" class="btn btn-primary pull-right">Add action</button>					
+	</div>
+	
+	<select id="resourceName" name="resourceName" class="form-control">
+	</select>
+	
+	<div id="authorizations">
+	</div>
+
+
+	<!-- Add action modal -->
+	<div class="modal fade" id="addActionModal" tabindex="-1" role="dialog" aria-labelledby="addActionLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="addActionLabel">Add Resource</h4>
+				</div>
+				<div class="modal-body">
+					<form method="POST" id="addActionForm">
+
+
+						<div class="form-group">
+							<label for="resourceName">Resource Name</label>	
+							<select id="resourceName" name="resourceName" class="form-control">
+							</select>
+						</div>
+
+						<div class="form-group ">
+							<label for="resourceDescription">Resource description</label>									
+							<textarea type="text" id="resourceDescription" name="resourceDescription" class="form-control "></textarea>
+						</div>
+
+						<div class="form-group ">
+							<label for="actionName">Action</label>
+							<input type="text" id="actionName" name="actionName" class="form-control"/>
+						</div>
+
+						<div class="form-group ">
+							<label for="resourceDescription">Action description</label>									
+							<textarea type="text" id="actionDescription" name="actionDescription" class="form-control "></textarea>
+						</div>
+
+
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button id="saveChanges" type="button" class="btn btn-primary" >Save Changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<?php
+}
+/* {/block 'body'} */
+/* {block 'scripts'}  file:authorizations\authorizations.tpl */
+function block_309535799a63704b712_92881877($_smarty_tpl, $_blockParentStack) {
+?>
+
+
+	<?php echo '<script'; ?>
+>
+
+		function addAction() {
+			$('#addActionModal').formz('clearErrors');
+
+			var data = $('#addActionForm').formz();
+
+			$.blockUI({ baseZ: 9000});
+
+			$.ajax({
+				url: '<?php echo smarty_function_site_url(array('url'=>'async/Authorizations/addAction'),$_smarty_tpl);?>
+',
+				type: 'POST',
+				dataType: 'json',
+				data: data,
+				error: function () {
+					$.unblockUI();
+					new PNotify({ title: 'Error', text: 'Couldn\'t create the new resource', type: 'error', styling: 'bootstrap3'});
+				},
+				success: function (response) {
+					$.unblockUI();
+
+					if (!$('#addActionForm').formz('processErrors', response))
+						return;
+					location.href = '<?php echo smarty_function_site_url(array('url'=>"authorizations/index"),$_smarty_tpl);?>
+';
+				}
+			});
+		}
+		function showAddActionModal() {
+
+			$('#addActionModal').modal('show');
+			//$('#addActionModal').formz('clearErrors');
+		}
+
+
+		$(function () {
+
+
+
+			$('#AddActionButton').click(showAddActionModal);
+
+			$('#saveChanges').click(addAction);
+
+			$('#authorizations').grid({
+				url: ' <?php echo smarty_function_site_url(array('url'=>"async/Authorizations/browseAuthorizations"),$_smarty_tpl);?>
+'
+				, columns: [
+					{ index: 'groupName', label: 'Resource', sortable: false}
+					, { index: 'actionName', label: 'Action', sortable: false}
+					, { index: 'description', label: 'Description', sortable: false}
+				]
+
+				, columnFilters: false
+				, rowNumbers: true
+
+						//, searchBox: true
+			});
+
+			/*	var $input = $('.typeahead');
+			 $input.typeahead({ source: [{ name: "Display name 1"},
+			 { name: "Display name 2"}]});
+			 */
+			/*
+			$.ajax({
+				url: '<?php echo smarty_function_site_url(array('url'=>'async/Authorizations/getResource'),$_smarty_tpl);?>
+',
+				type: 'POST',
+				dataType: 'json',
+				error: function () {
+					//new PNotify({ title: 'Info', text: 'Esec.', type: 'info', styling: 'bootstrap3'});
+				},
+				success: function (response) {
+					var actionData = response.data;
+
+					var $input = $('#resourceName');
+					$input.typeahead({ source: actionData}
+					);
+
+					//new PNotify( { title: 'Info', text: 'Succes', type: 'info', styling: 'bootstrap3'});
+				}
+			});
+*/	
+
+			$("#resourceName").select2({
+				ajax: {
+					url: '<?php echo smarty_function_site_url(array('url'=>'async/Authorizations/getResource'),$_smarty_tpl);?>
+',
+					dataType: 'json',
+					delay: 250,
+					type: 'POST',
+					data: function (params) {
+						return {
+							q: params.term, // search term
+							page: params.page
+						};
+					},
+					processResults: function (data, params) {
+						//alert(data.items[0][0].id)
+						return {
+							results: $.map(data.items, function (item) {
+								return {
+									id: item[0].id,
+									text: item[1].text
+								};
+							})
+						};
+					}
+				}
+			});
+			
+			
+		});
+	<?php echo '</script'; ?>
+>
+<?php
+}
+/* {/block 'scripts'} */
+}
